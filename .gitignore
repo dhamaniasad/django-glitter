@@ -11,3 +11,4 @@ build
 htmlcov/
 docs/build/
 docs/locale/
+/.idea

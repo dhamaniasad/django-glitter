@@ -73,6 +73,8 @@ def form_view(block, request, rerender, content_block, block_classes, form_class
             page_url = '%s://%s%s' % (request.scheme, request.get_host(), obj.get_absolute_url())
 
             email_subject = settings.EMAIL_SUBJECT_PREFIX + block._meta.verbose_name
+            if 'email' in form.cleaned_data:
+                email_subject += " - " + form.cleaned_data['email']
             email_body = render_to_string('glitter/form_email.txt', {
                 'form': form,
                 'obj': obj,
